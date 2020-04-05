@@ -1,0 +1,92 @@
+【前提】
+・Office365 E3の登録が完了していること(TXTレコード登録済み)
+・AzureADのmoduleをPCへインストール済みであること
+・AzureADへ接続済みであること
+接続コマンド:connect-AzureAD
+
+【手順】
+①現在のユーザーを確認
+Get-AzureADUser
+
+②csvファイル用意
+
+・内容
+DisplayName,UPN,Location,MailNickname
+<名前>,<UPN>,<Location>,<MailNickname>
+
+例)
+users.csv
+---------------------------------
+DisplayName,UPN,Location,MailNickname
+YamadaYuki,y-yamada@o365-test0402.work,JP,y-yamada
+AsadaSeigo,s-asada@o365-test0402.work,JP,s-asada
+---------------------------------
+
+③パスワード定義
+$PW=New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
+$PW.Password="Defaultp@ss1"
+$PW.ForceChangePasswordNextLogin=$false
+
+④csvをインポート
+Import-Csv C:\AzureAD\users.csv | ForEach-Object{New-AzureADUser -DisplayName $_.DisplayName -UserPrincipalName $_.UPN -PasswordProfile $PW -AccountEnabled $true -UsageLocation $_.Location -MailNickname $_.MailNickname}
+
+⑤ライセンス確認
+Get-AzureADSubscribedSku | Select Sku*,*Units
+
+実行例)
+PS C:\WINDOWS\system32> Get-AzureADSubscribedSku | Select Sku*,*Units
+
+SkuId                                SkuPartNumber  ConsumedUnits PrepaidUnits
+-----                                -------------  ------------- ------------
+b05e124f-c7cc-45a0-a6aa-8cf78c946968 EMSPREMIUM                 3 class LicenseUnitsDetail {...
+6fd2c87f-b296-42f0-b197-1e91e994b900 ENTERPRISEPACK             2 class LicenseUnitsDetail {...
+
+
+
+⑥ライセンス紐づけ
+$license = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicense
+$licenses = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicenses
+$license.SkuId = <ライセンスID>
+$licenses.AddLicenses = $license
+Get-AzureADUser | Foreach-Object {Set-AzureADUserLicense -ObjectId $_.userprincipalname -AssignedLicenses $licenses}
+
+
+例)
+$license = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicense
+$licenses = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicenses
+$license.SkuId = "b05e124f-c7cc-45a0-a6aa-8cf78c946968"
+$licenses.AddLicenses = $license
+Get-AzureADUser | Foreach-Object {Set-AzureADUserLicense -ObjectId $_.userprincipalname -AssignedLicenses $licenses}
+
+⑦ユーザー確認(追加されていること)
+Get-AzureADUser
+
+実行例)
+PS C:\WINDOWS\system32> Get-AzureADUser
+
+ObjectId                             DisplayName UserPrincipalName                         UserType
+--------                             ----------- -----------------                         --------
+c5b87a32-1f5a-4e50-9e56-658564985dbf 佐藤雅人    admin@office365testac0402.onmicrosoft.com Member
+e7554b94-a5ff-406d-866d-358bbae83fd1 AsadaSeigo  s-asada@o365-test0402.work                Member
+a3e4dda3-42c2-4c2a-aab0-dd7aa2ba5a66 Suzuki Toru t-suzuki@o365-test0402.work               Member
+53393f66-43a3-463f-927b-bde8415e1850 YamadaYuki  y-yamada@o365-test0402.work               Member
+
+
+PS C:\WINDOWS\system32>
+
+
+⑧ライセンスが付与されていることを確認
+※1ユーザーずつ(複数ユーザーを確認できる方法は模索中)
+
+$userUPN=<UPN>
+$licensePlanList = Get-AzureADSubscribedSku
+$userList = Get-AzureADUser -ObjectID $userUPN | Select -ExpandProperty AssignedLicenses | Select SkuID 
+$userList | ForEach { $sku=$_.SkuId ; $licensePlanList | ForEach { If ( $sku -eq $_.ObjectId.substring($_.ObjectId.length - 36, 36) ) { Write-Host $_.SkuPartNumber } } }
+
+実行例)
+PS C:\WINDOWS\system32> $userUPN="y-yamada@o365-test0402.work"
+PS C:\WINDOWS\system32> $licensePlanList = Get-AzureADSubscribedSku
+PS C:\WINDOWS\system32> $userList = Get-AzureADUser -ObjectID $userUPN | Select -ExpandProperty AssignedLicenses | Select SkuID
+PS C:\WINDOWS\system32> $userList | ForEach { $sku=$_.SkuId ; $licensePlanList | ForEach { If ( $sku -eq $_.ObjectId.substring($_.ObjectId.length - 36, 36) ) { Write-Host $_.SkuPartNumber } } }
+EMSPREMIUM
+PS C:\WINDOWS\system32>

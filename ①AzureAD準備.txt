@@ -1,0 +1,38 @@
+【前提】
+・Office365 E3の登録が完了していること
+・お名前ドットコムのTXTレコード登録が完了していること
+
+【手順】
+①PowerShellを管理者権限で起動
+
+②AzureADのModuleインストール
+Install-Module AzureAD
+
+※全て「Y」で進める。
+
+実行例)
+WINDOWS\system32> Install-Module AzureAD                                                                                                                                                                                                  続行するには NuGet プロバイダーが必要です
+PowerShellGet で NuGet ベースのリポジトリを操作するには、'2.8.5.201' 以降のバージョンの NuGet
+プロバイダーが必要です。NuGet プロバイダーは 'C:\Program Files\PackageManagement\ProviderAssemblies' または
+'C:\Users\owner\AppData\Local\PackageManagement\ProviderAssemblies' に配置する必要があります。'Install-PackageProvider
+-Name NuGet -MinimumVersion 2.8.5.201 -Force' を実行して NuGet プロバイダーをインストールすることもできます。今すぐ
+PowerShellGet で NuGet プロバイダーをインストールしてインポートしますか?
+[Y] はい(Y)  [N] いいえ(N)  [S] 中断(S)  [?] ヘルプ (既定値は "Y"): Y
+
+信頼されていないリポジトリ
+信頼されていないリポジトリからモジュールをインストールしようとしています。このリポジトリを信頼する場合は、Set-PSReposit
+ory コマンドレットを実行して、リポジトリの InstallationPolicy の値を変更してください。'PSGallery'
+からモジュールをインストールしますか?
+[Y] はい(Y)  [A] すべて続行(A)  [N] いいえ(N)  [L] すべて無視(L)  [S] 中断(S)  [?] ヘルプ (既定値は "N"): Y
+
+
+③AzureADへ接続
+connect-AzureAD
+
+※IDとパスワードを聞かれるため入力
+成功例)
+PS C:\WINDOWS\system32> connect-AzureAD
+
+Account                                   Environment TenantId                             TenantDomain
+-------                                   ----------- --------                             ------------
+admin@office365testac0402.onmicrosoft.com AzureCloud  ccbb6510-6b13-4972-9aaa-14a152f9b298 office365testac0402.onmic...
