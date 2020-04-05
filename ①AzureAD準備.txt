@@ -1,36 +1,36 @@
-y‘O’ñz
-EOffice365 E3‚Ì“o˜^‚ªŠ®—¹‚µ‚Ä‚¢‚é‚±‚Æ
-E‚¨–¼‘OƒhƒbƒgƒRƒ€‚ÌTXTƒŒƒR[ƒh“o˜^‚ªŠ®—¹‚µ‚Ä‚¢‚é‚±‚Æ
+ã€å‰æã€‘
+ãƒ»Office365 E3ã®ç™»éŒ²ãŒå®Œäº†ã—ã¦ã„ã‚‹ã“ã¨
+ãƒ»DNSã‚µãƒ¼ãƒã®TXTãƒ¬ã‚³ãƒ¼ãƒ‰ç™»éŒ²ãŒå®Œäº†ã—ã¦ã„ã‚‹ã“ã¨
 
-yŽè‡z
-‡@PowerShell‚ðŠÇ—ŽÒŒ ŒÀ‚Å‹N“®
+ã€æ‰‹é †ã€‘
+â‘ PowerShellã‚’ç®¡ç†è€…æ¨©é™ã§èµ·å‹•
 
-‡AAzureAD‚ÌModuleƒCƒ“ƒXƒg[ƒ‹
+â‘¡AzureADã®Moduleã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 Install-Module AzureAD
 
-¦‘S‚ÄuYv‚Åi‚ß‚éB
+â€»å…¨ã¦ã€ŒYã€ã§é€²ã‚ã‚‹ã€‚
 
-ŽÀs—á)
-WINDOWS\system32> Install-Module AzureAD                                                                                                                                                                                                  ‘±s‚·‚é‚É‚Í NuGet ƒvƒƒoƒCƒ_[‚ª•K—v‚Å‚·
-PowerShellGet ‚Å NuGet ƒx[ƒX‚ÌƒŠƒ|ƒWƒgƒŠ‚ð‘€ì‚·‚é‚É‚ÍA'2.8.5.201' ˆÈ~‚Ìƒo[ƒWƒ‡ƒ“‚Ì NuGet
-ƒvƒƒoƒCƒ_[‚ª•K—v‚Å‚·BNuGet ƒvƒƒoƒCƒ_[‚Í 'C:\Program Files\PackageManagement\ProviderAssemblies' ‚Ü‚½‚Í
-'C:\Users\owner\AppData\Local\PackageManagement\ProviderAssemblies' ‚É”z’u‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B'Install-PackageProvider
--Name NuGet -MinimumVersion 2.8.5.201 -Force' ‚ðŽÀs‚µ‚Ä NuGet ƒvƒƒoƒCƒ_[‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B¡‚·‚®
-PowerShellGet ‚Å NuGet ƒvƒƒoƒCƒ_[‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚ÄƒCƒ“ƒ|[ƒg‚µ‚Ü‚·‚©?
-[Y] ‚Í‚¢(Y)  [N] ‚¢‚¢‚¦(N)  [S] ’†’f(S)  [?] ƒwƒ‹ƒv (Šù’è’l‚Í "Y"): Y
+å®Ÿè¡Œä¾‹)
+WINDOWS\system32> Install-Module AzureAD                                                                                                 ç¶šè¡Œã™ã‚‹ã«ã¯ NuGet ãƒ—ãƒ­ãƒã‚¤ãƒ€ãƒ¼ãŒå¿…è¦ã§ã™
+PowerShellGet ã§ NuGet ãƒ™ãƒ¼ã‚¹ã®ãƒªãƒã‚¸ãƒˆãƒªã‚’æ“ä½œã™ã‚‹ã«ã¯ã€'2.8.5.201' ä»¥é™ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã® NuGet
+ãƒ—ãƒ­ãƒã‚¤ãƒ€ãƒ¼ãŒå¿…è¦ã§ã™ã€‚NuGet ãƒ—ãƒ­ãƒã‚¤ãƒ€ãƒ¼ã¯ 'C:\Program Files\PackageManagement\ProviderAssemblies' ã¾ãŸã¯
+'C:\Users\owner\AppData\Local\PackageManagement\ProviderAssemblies' ã«é…ç½®ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚'Install-PackageProvider
+-Name NuGet -MinimumVersion 2.8.5.201 -Force' ã‚’å®Ÿè¡Œã—ã¦ NuGet ãƒ—ãƒ­ãƒã‚¤ãƒ€ãƒ¼ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚ä»Šã™ã
+PowerShellGet ã§ NuGet ãƒ—ãƒ­ãƒã‚¤ãƒ€ãƒ¼ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã™ã‹?
+[Y] ã¯ã„(Y)  [N] ã„ã„ãˆ(N)  [S] ä¸­æ–­(S)  [?] ãƒ˜ãƒ«ãƒ— (æ—¢å®šå€¤ã¯ "Y"): Y
 
-M—Š‚³‚ê‚Ä‚¢‚È‚¢ƒŠƒ|ƒWƒgƒŠ
-M—Š‚³‚ê‚Ä‚¢‚È‚¢ƒŠƒ|ƒWƒgƒŠ‚©‚çƒ‚ƒWƒ…[ƒ‹‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚Ü‚·B‚±‚ÌƒŠƒ|ƒWƒgƒŠ‚ðM—Š‚·‚éê‡‚ÍASet-PSReposit
-ory ƒRƒ}ƒ“ƒhƒŒƒbƒg‚ðŽÀs‚µ‚ÄAƒŠƒ|ƒWƒgƒŠ‚Ì InstallationPolicy ‚Ì’l‚ð•ÏX‚µ‚Ä‚­‚¾‚³‚¢B'PSGallery'
-‚©‚çƒ‚ƒWƒ…[ƒ‹‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·‚©?
-[Y] ‚Í‚¢(Y)  [A] ‚·‚×‚Ä‘±s(A)  [N] ‚¢‚¢‚¦(N)  [L] ‚·‚×‚Ä–³Ž‹(L)  [S] ’†’f(S)  [?] ƒwƒ‹ƒv (Šù’è’l‚Í "N"): Y
+ä¿¡é ¼ã•ã‚Œã¦ã„ãªã„ãƒªãƒã‚¸ãƒˆãƒª
+ä¿¡é ¼ã•ã‚Œã¦ã„ãªã„ãƒªãƒã‚¸ãƒˆãƒªã‹ã‚‰ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã‚ˆã†ã¨ã—ã¦ã„ã¾ã™ã€‚ã“ã®ãƒªãƒã‚¸ãƒˆãƒªã‚’ä¿¡é ¼ã™ã‚‹å ´åˆã¯ã€Set-PSReposit
+ory ã‚³ãƒžãƒ³ãƒ‰ãƒ¬ãƒƒãƒˆã‚’å®Ÿè¡Œã—ã¦ã€ãƒªãƒã‚¸ãƒˆãƒªã® InstallationPolicy ã®å€¤ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚'PSGallery'
+ã‹ã‚‰ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã™ã‹?
+[Y] ã¯ã„(Y)  [A] ã™ã¹ã¦ç¶šè¡Œ(A)  [N] ã„ã„ãˆ(N)  [L] ã™ã¹ã¦ç„¡è¦–(L)  [S] ä¸­æ–­(S)  [?] ãƒ˜ãƒ«ãƒ— (æ—¢å®šå€¤ã¯ "N"): Y
 
 
-‡BAzureAD‚ÖÚ‘±
+â‘¢AzureADã¸æŽ¥ç¶š
 connect-AzureAD
 
-¦ID‚ÆƒpƒXƒ[ƒh‚ð•·‚©‚ê‚é‚½‚ß“ü—Í
-¬Œ÷—á)
+â€»IDã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’èžã‹ã‚Œã‚‹ãŸã‚å…¥åŠ›
+æˆåŠŸä¾‹)
 PS C:\WINDOWS\system32> connect-AzureAD
 
 Account                                   Environment TenantId                             TenantDomain
