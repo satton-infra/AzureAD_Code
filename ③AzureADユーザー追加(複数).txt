@@ -1,20 +1,20 @@
-y‘O’ñz
-EOffice365 E3‚Ì“o˜^‚ªŠ®—¹‚µ‚Ä‚¢‚é‚±‚Æ(TXTƒŒƒR[ƒh“o˜^Ï‚İ)
-EAzureAD‚Ìmodule‚ğPC‚ÖƒCƒ“ƒXƒg[ƒ‹Ï‚İ‚Å‚ ‚é‚±‚Æ
-EAzureAD‚ÖÚ‘±Ï‚İ‚Å‚ ‚é‚±‚Æ
-Ú‘±ƒRƒ}ƒ“ƒh:connect-AzureAD
+ã€å‰æã€‘
+ãƒ»Office365 E3ã®ç™»éŒ²ãŒå®Œäº†ã—ã¦ã„ã‚‹ã“ã¨(TXTãƒ¬ã‚³ãƒ¼ãƒ‰ç™»éŒ²æ¸ˆã¿)
+ãƒ»AzureADã®moduleã‚’PCã¸ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿ã§ã‚ã‚‹ã“ã¨
+ãƒ»AzureADã¸æ¥ç¶šæ¸ˆã¿ã§ã‚ã‚‹ã“ã¨
+æ¥ç¶šã‚³ãƒãƒ³ãƒ‰:connect-AzureAD
 
-yè‡z
-‡@Œ»İ‚Ìƒ†[ƒU[‚ğŠm”F
+ã€æ‰‹é †ã€‘
+â‘ ç¾åœ¨ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’ç¢ºèª
 Get-AzureADUser
 
-‡Acsvƒtƒ@ƒCƒ‹—pˆÓ
+â‘¡csvãƒ•ã‚¡ã‚¤ãƒ«ç”¨æ„
 
-E“à—e
+ãƒ»å†…å®¹
 DisplayName,UPN,Location,MailNickname
-<–¼‘O>,<UPN>,<Location>,<MailNickname>
+<åå‰>,<UPN>,<Location>,<MailNickname>
 
-—á)
+ä¾‹)
 users.csv
 ---------------------------------
 DisplayName,UPN,Location,MailNickname
@@ -22,18 +22,18 @@ YamadaYuki,y-yamada@o365-test0402.work,JP,y-yamada
 AsadaSeigo,s-asada@o365-test0402.work,JP,s-asada
 ---------------------------------
 
-‡BƒpƒXƒ[ƒh’è‹`
+â‘¢ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å®šç¾©
 $PW=New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
 $PW.Password="Defaultp@ss1"
 $PW.ForceChangePasswordNextLogin=$false
 
-‡Ccsv‚ğƒCƒ“ƒ|[ƒg
+â‘£csvã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 Import-Csv C:\AzureAD\users.csv | ForEach-Object{New-AzureADUser -DisplayName $_.DisplayName -UserPrincipalName $_.UPN -PasswordProfile $PW -AccountEnabled $true -UsageLocation $_.Location -MailNickname $_.MailNickname}
 
-‡Dƒ‰ƒCƒZƒ“ƒXŠm”F
+â‘¤ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ç¢ºèª
 Get-AzureADSubscribedSku | Select Sku*,*Units
 
-Às—á)
+å®Ÿè¡Œä¾‹)
 PS C:\WINDOWS\system32> Get-AzureADSubscribedSku | Select Sku*,*Units
 
 SkuId                                SkuPartNumber  ConsumedUnits PrepaidUnits
@@ -43,30 +43,29 @@ b05e124f-c7cc-45a0-a6aa-8cf78c946968 EMSPREMIUM                 3 class LicenseU
 
 
 
-‡Eƒ‰ƒCƒZƒ“ƒX•R‚Ã‚¯
+â‘¥ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ç´ã¥ã‘
 $license = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicense
 $licenses = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicenses
-$license.SkuId = <ƒ‰ƒCƒZƒ“ƒXID>
+$license.SkuId = <ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ID>
 $licenses.AddLicenses = $license
 Get-AzureADUser | Foreach-Object {Set-AzureADUserLicense -ObjectId $_.userprincipalname -AssignedLicenses $licenses}
 
 
-—á)
+ä¾‹)
 $license = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicense
 $licenses = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicenses
 $license.SkuId = "b05e124f-c7cc-45a0-a6aa-8cf78c946968"
 $licenses.AddLicenses = $license
 Get-AzureADUser | Foreach-Object {Set-AzureADUserLicense -ObjectId $_.userprincipalname -AssignedLicenses $licenses}
 
-‡Fƒ†[ƒU[Šm”F(’Ç‰Á‚³‚ê‚Ä‚¢‚é‚±‚Æ)
+â‘¦ãƒ¦ãƒ¼ã‚¶ãƒ¼ç¢ºèª(è¿½åŠ ã•ã‚Œã¦ã„ã‚‹ã“ã¨)
 Get-AzureADUser
 
-Às—á)
+å®Ÿè¡Œä¾‹)
 PS C:\WINDOWS\system32> Get-AzureADUser
 
 ObjectId                             DisplayName UserPrincipalName                         UserType
 --------                             ----------- -----------------                         --------
-c5b87a32-1f5a-4e50-9e56-658564985dbf ²“¡‰ël    admin@office365testac0402.onmicrosoft.com Member
 e7554b94-a5ff-406d-866d-358bbae83fd1 AsadaSeigo  s-asada@o365-test0402.work                Member
 a3e4dda3-42c2-4c2a-aab0-dd7aa2ba5a66 Suzuki Toru t-suzuki@o365-test0402.work               Member
 53393f66-43a3-463f-927b-bde8415e1850 YamadaYuki  y-yamada@o365-test0402.work               Member
@@ -75,15 +74,15 @@ a3e4dda3-42c2-4c2a-aab0-dd7aa2ba5a66 Suzuki Toru t-suzuki@o365-test0402.work    
 PS C:\WINDOWS\system32>
 
 
-‡Gƒ‰ƒCƒZƒ“ƒX‚ª•t—^‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F
-¦1ƒ†[ƒU[‚¸‚Â(•¡”ƒ†[ƒU[‚ğŠm”F‚Å‚«‚é•û–@‚Í–Íõ’†)
+â‘§ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ãŒä»˜ä¸ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª
+â€»1ãƒ¦ãƒ¼ã‚¶ãƒ¼ãšã¤(è¤‡æ•°ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’ç¢ºèªã§ãã‚‹æ–¹æ³•ã¯æ¨¡ç´¢ä¸­)
 
 $userUPN=<UPN>
 $licensePlanList = Get-AzureADSubscribedSku
 $userList = Get-AzureADUser -ObjectID $userUPN | Select -ExpandProperty AssignedLicenses | Select SkuID 
 $userList | ForEach { $sku=$_.SkuId ; $licensePlanList | ForEach { If ( $sku -eq $_.ObjectId.substring($_.ObjectId.length - 36, 36) ) { Write-Host $_.SkuPartNumber } } }
 
-Às—á)
+å®Ÿè¡Œä¾‹)
 PS C:\WINDOWS\system32> $userUPN="y-yamada@o365-test0402.work"
 PS C:\WINDOWS\system32> $licensePlanList = Get-AzureADSubscribedSku
 PS C:\WINDOWS\system32> $userList = Get-AzureADUser -ObjectID $userUPN | Select -ExpandProperty AssignedLicenses | Select SkuID
